@@ -1,4 +1,4 @@
-package org.springframework.data.inmemory;
+package org.codeasync.spring.data.inmemory;
 
 import java.util.Iterator;
 import java.util.Map;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.data.inmemory.repository;
+package org.codeasync.spring.data.inmemory.repository;
 
 import java.io.Serializable;
 

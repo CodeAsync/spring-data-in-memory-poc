@@ -21,11 +21,12 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.codeasync.spring.data.inmemory.ConcurrentHashMapDataStore;
+import org.codeasync.spring.data.inmemory.repository.InMemoryRepository;
+import org.codeasync.spring.data.inmemory.repository.support.InMemoryRepositoryFactory;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.data.inmemory.ConcurrentHashMapDataStore;
 import org.springframework.data.inmemory.repository.sample.TestObject;
-import org.springframework.data.inmemory.repository.support.InMemoryRepositoryFactory;
 import org.springframework.data.repository.CrudRepository;
 
 /**

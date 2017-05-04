@@ -1,4 +1,4 @@
-package org.springframework.data.inmemory.repository.support;
+package org.codeasync.spring.data.inmemory.repository.support;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.springframework.data.inmemory.DataStore;
-import org.springframework.data.inmemory.IdEntityPair;
-import org.springframework.data.inmemory.repository.SimpleInMemoryRepository;
+import org.codeasync.spring.data.inmemory.DataStore;
+import org.codeasync.spring.data.inmemory.IdEntityPair;
+import org.codeasync.spring.data.inmemory.repository.SimpleInMemoryRepository;
 import org.springframework.data.repository.core.EntityInformation;
 import org.springframework.data.repository.core.NamedQueries;
+import org.springframework.data.repository.core.RepositoryInformation;
 import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.repository.core.support.ReflectionEntityInformation;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
@@ -41,7 +42,7 @@ public class InMemoryRepositoryFactory<T, ID extends Serializable> extends Repos
 	}
 
 	@Override
-	protected Object getTargetRepository(RepositoryMetadata metadata) {
+	protected Object getTargetRepository(RepositoryInformation metadata) {
 
 		EntityInformation<T, ID> ei = this.<T, ID> getEntityInformation((Class<T>) metadata.getDomainType());
 		return new SimpleInMemoryRepository<T, ID>(dataStore, ei);
