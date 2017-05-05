@@ -41,9 +41,10 @@ public class InMemoryRepositoryFactory<T, ID extends Serializable> extends Repos
 		return new ReflectionEntityInformation<ET, IT>(domainClass);
 	}
 
+
+	@SuppressWarnings("unchecked")
 	@Override
 	protected Object getTargetRepository(RepositoryInformation metadata) {
-
 		EntityInformation<T, ID> ei = this.<T, ID> getEntityInformation((Class<T>) metadata.getDomainType());
 		return new SimpleInMemoryRepository<T, ID>(dataStore, ei);
 	}
@@ -65,13 +66,11 @@ public class InMemoryRepositoryFactory<T, ID extends Serializable> extends Repos
 	 */
 	public static class InMemoryQueryLookupStrategy<T, ID extends Serializable> implements QueryLookupStrategy {
 
-		private Key key;
 		private EvaluationContextProvider evaluationContextProvider;
 		private DataStore<T, ID> dataStore;
 
 		public InMemoryQueryLookupStrategy(Key key, EvaluationContextProvider evaluationContextProvider,
 				DataStore<T, ID> dataStore) {
-			this.key = key;
 			this.evaluationContextProvider = evaluationContextProvider;
 			this.dataStore = dataStore;
 		}
@@ -91,13 +90,11 @@ public class InMemoryRepositoryFactory<T, ID extends Serializable> extends Repos
 
 		private QueryMethod queryMethod;
 		private Expression expression;
-		private EvaluationContextProvider evaluationContextProvider;
 		private DataStore<T, ID> dataStore;
 
 		public InMemoryPartTreeQuery(QueryMethod queryMethod, EvaluationContextProvider evalContextProvider,
 				DataStore<T, ID> dataStore) {
 			this.queryMethod = queryMethod;
-			this.evaluationContextProvider = evalContextProvider;
 			this.expression = toPredicateExpression(queryMethod);
 			this.dataStore = dataStore;
 		}

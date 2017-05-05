@@ -127,6 +127,7 @@ public class SimpleInMemoryRepository<T, ID extends Serializable> implements InM
 		getStore().clear();
 	}
 
+	@SuppressWarnings("unchecked")
 	private Map<ID, T> getStore() {
 		return (Map<ID, T>) dataStore.getDelegate();
 	}
